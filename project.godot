@@ -11,5 +11,11 @@ config_version=5
 [application]
 
 config/name="TowerDefense"
+run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_height=640
+mouse_cursor/stretch/scale=8.0
