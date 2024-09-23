@@ -4397,9 +4397,8 @@ script = ExtResource("3_r6x88")
 curve = SubResource("Curve2D_0bnom")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Enemies/Path2D"]
-position = Vector2(-480, 89.5996)
+position = Vector2(-960, -352)
 rotation = 1.5708
-progress = 921.599
 rotates = false
 
 [node name="CharacterBody2D" parent="Enemies/Path2D/PathFollow2D" instance=ExtResource("3_e17m7")]
