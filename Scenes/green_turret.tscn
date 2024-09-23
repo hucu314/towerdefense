@@ -4,13 +4,6 @@
 [ext_resource type="Script" path="res://Scripts/greenTurret.gd" id="2_4q04w"]
 
 [node name="greenTurret" type="Sprite2D"]
-<<<<<<< Updated upstream
-rotation = -0.837758
-texture = ExtResource("1_cjvdm")
-region_enabled = true
-region_rect = Rect2(1216, 640, 64, 64)
-script = ExtResource("2_4q04w")
-=======
 rotation = 3.13011
 texture = ExtResource("1_cjvdm")
 flip_v = true
@@ -21,4 +14,3 @@ script = ExtResource("2_4q04w")
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
->>>>>>> Stashed changes
