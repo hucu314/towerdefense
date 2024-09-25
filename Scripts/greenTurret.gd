@@ -16,10 +16,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	mouseAng = rad_to_deg(get_angle_to(get_global_mouse_position()))
-	print(mouseAng)
+
 	pass
 
 
 func _on_timer_timeout():
 	self.global_rotation_degrees = mouseAng
+	print('new angle')
 	pass # Replace with function body.
