@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://biirkyd2ix3qj"]
+[gd_scene load_steps=10 format=3 uid="uid://biirkyd2ix3qj"]
 
 [ext_resource type="Texture2D" uid="uid://c16r4bmmww23q" path="res://Assets/towerDefense_tilesheet.png" id="1_6lvkv"]
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_y7pxk"]
 [ext_resource type="PackedScene" uid="uid://bmsnjanrvqkwl" path="res://Scenes/green_turret.tscn" id="2_e4y0r"]
 [ext_resource type="Script" path="res://Scenes/Enemies.gd" id="3_r6x88"]
+[ext_resource type="Script" path="res://Scenes/variables.gd" id="5_ijupb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26y0n"]
+size = Vector2(104, 168)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2hwvp"]
 texture = ExtResource("1_6lvkv")
@@ -4378,6 +4382,12 @@ point_count = 8
 [node name="game" type="Node"]
 script = ExtResource("1_y7pxk")
 
+[node name="endZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="endZone"]
+position = Vector2(1012, -356)
+shape = SubResource("RectangleShape2D_26y0n")
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_jaqls")
 format = 2
@@ -4398,5 +4408,16 @@ script = ExtResource("3_r6x88")
 curve = SubResource("Curve2D_0bnom")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="variables" type="Node" parent="."]
+script = ExtResource("5_ijupb")
+
+[node name="health" type="Label" parent="."]
+offset_left = -888.0
+offset_top = -624.0
+offset_right = -818.0
+offset_bottom = -601.0
+scale = Vector2(10, 10)
+text = "Health: X"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
