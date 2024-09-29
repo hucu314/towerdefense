@@ -7,7 +7,7 @@ extends Node
 @onready var button = $Button
 var axolot = preload("res://Scenes/axolot.tscn")
 var fishEnemy = preload("res://Scenes/fish_enemy.tscn")
-@onready var enemies = [axolot,fishEnemy]
+@onready var types = [axolot,fishEnemy]
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
 	pass # Replace with function body.
@@ -20,7 +20,7 @@ func _process(delta):
 
 
 func randEnem():
-	var enemy = enemies.pick_random()
+	var enemy = types.pick_random()
 	var monster = enemy.instantiate()
 	path_follow.add_child(monster)
 	return enemy

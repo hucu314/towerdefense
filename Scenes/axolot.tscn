@@ -187,4 +187,5 @@ animation = &"right"
 autoplay = "right"
 frame_progress = 0.145332
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+polygon = PackedVector2Array(-20, -40, 15, -40, 15, -35, 20, -35, 20, -30, 25, -30, 25, -20, 30, -20, 30, -5, 25, -5, 25, 0, 20, 0, 20, 20, 30, 20, 30, 25, 35, 25, 35, 35, 15, 35, 15, 30, 5, 30, 5, 35, -5, 35, -5, 30, -15, 30, -15, 35, -35, 35, -35, 25, -30, 25, -30, 20, -20, 20, -20, 0, -25, 0, -25, -5, -30, -5, -30, -25, -25, -25, -25, -35, -20, -35)
