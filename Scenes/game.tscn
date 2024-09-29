@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://biirkyd2ix3qj"]
 
 [ext_resource type="Texture2D" uid="uid://c16r4bmmww23q" path="res://Assets/towerDefense_tilesheet.png" id="1_6lvkv"]
-[ext_resource type="Script" path="res://Scenes/game.gd" id="1_y7pxk"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_y7pxk"]
 [ext_resource type="PackedScene" uid="uid://bmsnjanrvqkwl" path="res://Scenes/green_turret.tscn" id="2_e4y0r"]
-[ext_resource type="Script" path="res://Scenes/Enemies.gd" id="3_r6x88"]
-[ext_resource type="Script" path="res://Scenes/variables.gd" id="5_ijupb"]
+[ext_resource type="Script" path="res://Scripts/Enemies.gd" id="3_r6x88"]
+[ext_resource type="Script" path="res://Scripts/variables.gd" id="5_ijupb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26y0n"]
 size = Vector2(104, 168)
@@ -4408,6 +4408,7 @@ script = ExtResource("3_r6x88")
 curve = SubResource("Curve2D_0bnom")
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="variables" type="Node" parent="."]
 script = ExtResource("5_ijupb")
@@ -4420,4 +4421,12 @@ offset_bottom = -601.0
 scale = Vector2(10, 10)
 text = "Health: X"
 
+[node name="Button" type="Button" parent="."]
+offset_left = 616.0
+offset_top = -232.0
+offset_right = 816.0
+offset_bottom = -70.0
+text = "New Wave"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
