@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmsnjanrvqkwl"]
+
+[ext_resource type="Texture2D" uid="uid://c16r4bmmww23q" path="res://Assets/towerDefense_tilesheet.png" id="1_cjvdm"]
+[ext_resource type="Script" path="res://Scripts/greenTurret.gd" id="2_4q04w"]
+
+[node name="greenTurret" type="Sprite2D"]
+rotation = -0.837758
+texture = ExtResource("1_cjvdm")
+region_enabled = true
+region_rect = Rect2(1216, 640, 64, 64)
+script = ExtResource("2_4q04w")
