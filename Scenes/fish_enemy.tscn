@@ -24,8 +24,12 @@ func _process(delta):
 	fish_enemy.progress += speed*delta
 	if self.progress_ratio >= .999:
 		variables.health -= 5
+		variables.totalEnem -= 1
+		print(variables.totalEnem)
 		self.queue_free()
 	if health == 0:
+		variables.totalEnem -= 1
+		print(variables.totalEnem)
 		self.queue_free()
 	pass
 

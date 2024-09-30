@@ -4433,5 +4433,16 @@ script = SubResource("GDScript_o1xh3")
 position = Vector2(-480, 162)
 shape = SubResource("RectangleShape2D_26y0n")
 
+[node name="countTimer" type="Label" parent="."]
+visible = false
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 200
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

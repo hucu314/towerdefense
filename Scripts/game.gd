@@ -2,9 +2,11 @@ extends Node
 @onready var path_follow = $Enemies/Path2D
 @onready var timer = $Timer
 @onready var healthText = $health
-@onready var totalEnem = 0
+@onready var waveEnem = 0
 @onready var numEnem = 0
 @onready var button = $Button
+@onready var countdown = false
+@onready var countTimer = $countTimer
 var axolot = preload("res://Scenes/axolot.tscn")
 var fishEnemy = preload("res://Scenes/fish_enemy.tscn")
 @onready var types = [axolot,fishEnemy]
@@ -15,6 +17,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if countdown == true:
+		countTimer.visible = true
+		countTimer.text = str(int(timer.get_time_left())+1)
+	if variables.totalEnem==0 and countdown == false:
+		button.visible=true
 	healthText.text = "Health: " + str(variables.health)
 	pass
 
@@ -23,14 +30,19 @@ func randEnem():
 	var enemy = types.pick_random()
 	var monster = enemy.instantiate()
 	path_follow.add_child(monster)
+	variables.totalEnem+=1
+	print(variables.totalEnem)
 	return enemy
 
 func startWave():
-	totalEnem = randi_range(7,16)
-	print(totalEnem)
+	waveEnem = randi_range(7,16)
+	button.visible = false
+	print(waveEnem)
 
 func _on_timer_timeout():
-	if numEnem < totalEnem:
+	countdown = false
+	countTimer.visible = false
+	if numEnem < waveEnem:
 		randEnem()
 		numEnem += 1
 		timer.start(5)
@@ -41,5 +53,6 @@ func _on_timer_timeout():
 func _on_button_pressed():
 	startWave()
 	timer.start(3)
-	print(timer.get_time_left())
+	countdown = true
+	button.visible = false
 	pass # Replace with function body.
