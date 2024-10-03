@@ -19,6 +19,7 @@ func _process(delta):
 		print('Name: '+str(direction[0]))
 		print('Angle: '+str(direction[1]))
 		print('Distance: '+str(direction[2]))
+		rotation_degrees = direction[1]+90
 	directions.clear()
 	if target != null:
 		var angle = rad_to_deg(self.global_position.angle_to_point(target.global_position))

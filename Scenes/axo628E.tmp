@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://c0q6u4v2vi4h0"]
 
+[ext_resource type="Script" path="res://Scenes/axolot.gd" id="1_4y376"]
 [ext_resource type="Texture2D" uid="uid://dgcvt8mv743hp" path="res://Assets/Monsters/Axolot/SpriteSheet.png" id="1_b2kbe"]
-[ext_resource type="Script" path="res://Scripts/axolot.gd" id="1_kch8l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6s2m"]
 atlas = ExtResource("1_b2kbe")
@@ -140,7 +140,7 @@ animations = [{
 
 [node name="fishEnemy" type="PathFollow2D"]
 rotates = false
-script = ExtResource("1_kch8l")
+script = ExtResource("1_4y376")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 

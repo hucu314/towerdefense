@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://q2rpvgh6jutl"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_06ihx"]
+[ext_resource type="Texture2D" uid="uid://c16r4bmmww23q" path="res://Assets/towerDefense_tilesheet.png" id="2_voi67"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7rotg"]
+radius = 8.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_06ihx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_voi67")
+region_enabled = true
+region_rect = Rect2(1232, 720, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7rotg")
