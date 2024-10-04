@@ -141,18 +141,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_163b6"]
 radius = 54.0093
 
-[node name="fishEnemy" type="PathFollow2D"]
+[node name="fish_enemy" type="PathFollow2D"]
 rotates = false
 script = ExtResource("1_gkdvn")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="enemy" type="CharacterBody2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy"]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_wq1xs")
 animation = &"back"
 autoplay = "right"
 
-[node name="CollisionPolygon2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="enemy"]
 position = Vector2(-1, 4)
 shape = SubResource("CircleShape2D_163b6")

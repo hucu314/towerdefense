@@ -2,7 +2,7 @@ extends PathFollow2D
 class_name Enemies
 
 @onready var enemy = $"."
-@onready var animated_sprite = $CharacterBody2D/AnimatedSprite2D
+@onready var animated_sprite = $enemy/AnimatedSprite2D
 @onready var path_follow : Path2D = $Path2D
 @export var speed = 100
 @export var health = 100

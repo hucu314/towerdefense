@@ -1,70 +1,70 @@
 [gd_scene load_steps=20 format=3 uid="uid://c0q6u4v2vi4h0"]
 
-[ext_resource type="Texture2D" uid="uid://dgcvt8mv743hp" path="res://Assets/Monsters/Axolot/SpriteSheet.png" id="1_b2kbe"]
-[ext_resource type="Script" path="res://Scripts/axolot.gd" id="1_kch8l"]
+[ext_resource type="Script" path="res://Scripts/axolot.gd" id="1_hwwaf"]
+[ext_resource type="Texture2D" uid="uid://dgcvt8mv743hp" path="res://Assets/Monsters/Axolot/SpriteSheet.png" id="2_lbvjh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6s2m"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmyxt"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnitw"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(16, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3w4pd"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(16, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_082qv"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jof1a"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h6rwd"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hs400"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vu5w5"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7iwm"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n66ti"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(32, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajoa4"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(32, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7bngu"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abnrd"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i52lf"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(48, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7j4cm"]
-atlas = ExtResource("1_b2kbe")
+atlas = ExtResource("2_lbvjh")
 region = Rect2(48, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wq1xs"]
@@ -138,18 +138,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="fishEnemy" type="PathFollow2D"]
+[node name="axolot_enemy" type="PathFollow2D"]
 rotates = false
-script = ExtResource("1_kch8l")
+script = ExtResource("1_hwwaf")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="enemy" type="CharacterBody2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy"]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_wq1xs")
 animation = &"right"
 autoplay = "right"
 frame_progress = 0.145332
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="enemy"]
 polygon = PackedVector2Array(-20, -40, 15, -40, 15, -35, 20, -35, 20, -30, 25, -30, 25, -20, 30, -20, 30, -5, 25, -5, 25, 0, 20, 0, 20, 20, 30, 20, 30, 25, 35, 25, 35, 35, 15, 35, 15, 30, 5, 30, 5, 35, -5, 35, -5, 30, -15, 30, -15, 35, -35, 35, -35, 25, -30, 25, -30, 20, -20, 20, -20, 0, -25, 0, -25, -5, -30, -5, -30, -25, -25, -25, -25, -35, -20, -35)
