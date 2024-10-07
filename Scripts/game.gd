@@ -14,7 +14,6 @@ var cyclops = preload("res://Scenes/cyclops_enemy.tscn")
 @onready var types = [axolot,fishEnemy,cyclops]
 @onready var restart = $buttons/restart
 @onready var wave_num = $labels/waveNum
-@onready var restart = $buttons/restart
 
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
