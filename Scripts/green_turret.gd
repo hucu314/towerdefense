@@ -1,13 +1,16 @@
 extends CharacterBody2D
-const bullet = preload("res://Scenes/bullet.tscn")
+@onready var bullets = $"../bullets"
+
 @onready var timer = $Timer
 
+var bullet_type = preload("res://Scenes/green_bullet.tscn")
 var targetDist = 1000
 var numTargets = 0
 var directions = []
+var time = 1.5
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	timer.start(5)
+	timer.start(time)
 	pass # Replace with function body.
 
 
@@ -17,14 +20,8 @@ func _process(delta):
 	targetDist = target
 	if directions.is_empty()==false:
 		var direction = directions[0]
-		#print('Name: '+str(direction[0]))
-		#print('Angle: '+str(direction[1]))
-		#print('Distance: '+str(direction[2]))
 		rotation_degrees = direction[1]+90
 	directions.clear()
-	if target != null:
-		var angle = rad_to_deg(self.global_position.angle_to_point(target.global_position))
-		rotation_degrees = angle+90
 	pass
 
 func closeEnemy():
@@ -45,7 +42,6 @@ func closeEnemy():
 	pass
 
 func _on_area_2d_body_entered(body):
-	print(body.name)
 	if 'enemy' in body.name:
 		variables.targets.append(body)
 		numTargets+=1
@@ -53,7 +49,6 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_area_2d_body_exited(body):
-	print(body.name)
 	if 'enemy' in body.name:
 		variables.targets.erase(body)
 		numTargets-=1
@@ -63,10 +58,8 @@ func _on_area_2d_body_exited(body):
 func _on_timer_timeout():
 	if variables.waveStart == true:
 		if variables.targets.is_empty() == false:
-			var bulletInstance = bullet.instantiate()
-			print(bulletInstance)
+			var bulletInstance = bullet_type.instantiate()
 			bulletInstance.global_position = global_position
 			bulletInstance.enemy = variables.targets[0].global_position
-			add_child(bulletInstance)
-			print('bullet instnatitated')
+			bullets.add_child(bulletInstance)
 	pass # Replace with function body.

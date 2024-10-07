@@ -1,70 +1,113 @@
-[gd_scene load_steps=21 format=3 uid="uid://c0q6u4v2vi4h0"]
+[gd_scene load_steps=20 format=3 uid="uid://c0q6u4v2vi4h0"]
 
-[ext_resource type="Script" path="res://Scripts/axolot.gd" id="1_hwwaf"]
-[ext_resource type="Texture2D" uid="uid://dgcvt8mv743hp" path="res://Assets/Monsters/Axolot/SpriteSheet.png" id="2_lbvjh"]
+[ext_resource type="Texture2D" uid="uid://dgcvt8mv743hp" path="res://Assets/Monsters/Axolot/SpriteSheet.png" id="1_b2kbe"]
+
+[sub_resource type="GDScript" id="GDScript_tmit3"]
+script/source = "extends PathFollow2D
+@onready var fish_enemy = $\".\"
+@onready var animated_sprite = $CharacterBody2D/AnimatedSprite2D
+@onready var path_follow : Path2D = $Path2D
+@export var speed = 100
+@export var health = 100
+var last_position
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	last_position = global_position
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	var direction = dirAnimation(global_position-last_position)
+	last_position = global_position
+	fish_enemy.progress += speed*delta
+	if self.progress_ratio >= .999:
+		variables.health -= 5
+		variables.totalEnem -= 1
+		print(variables.totalEnem)
+		self.queue_free()
+	if health == 0:
+		variables.totalEnem -= 1
+		print(variables.totalEnem)
+		self.queue_free()
+	pass
+
+func dirAnimation(direction:Vector2):
+	if direction.x > 0 and direction.y == 0:
+		animated_sprite.set_animation('right')
+	if direction.x < 0 and direction.y == 0:
+		animated_sprite.set_animation('left')
+	if direction.x == 0 and direction.y > 0:
+		animated_sprite.set_animation('front')
+	if direction.x == 0 and direction.y < 0:
+		animated_sprite.set_animation('back')
+	
+
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6s2m"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmyxt"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnitw"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(16, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3w4pd"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(16, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_082qv"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jof1a"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h6rwd"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hs400"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vu5w5"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7iwm"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n66ti"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(32, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajoa4"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(32, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7bngu"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abnrd"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i52lf"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(48, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7j4cm"]
-atlas = ExtResource("2_lbvjh")
+atlas = ExtResource("1_b2kbe")
 region = Rect2(48, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wq1xs"]
@@ -138,29 +181,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cotqo"]
-bg_color = Color(0.215686, 0.937255, 0, 1)
-
-[node name="axolot_enemy" type="PathFollow2D"]
+[node name="fishEnemy" type="PathFollow2D"]
 rotates = false
-script = ExtResource("1_hwwaf")
+script = SubResource("GDScript_tmit3")
 
-[node name="enemy" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_wq1xs")
 animation = &"right"
 autoplay = "right"
 frame_progress = 0.145332
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="enemy"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
 polygon = PackedVector2Array(-20, -40, 15, -40, 15, -35, 20, -35, 20, -30, 25, -30, 25, -20, 30, -20, 30, -5, 25, -5, 25, 0, 20, 0, 20, 20, 30, 20, 30, 25, 35, 25, 35, 35, 15, 35, 15, 30, 5, 30, 5, 35, -5, 35, -5, 30, -15, 30, -15, 35, -35, 35, -35, 25, -30, 25, -30, 20, -20, 20, -20, 0, -25, 0, -25, -5, -30, -5, -30, -25, -25, -25, -25, -35, -20, -35)
-
-[node name="ProgressBar" type="ProgressBar" parent="enemy"]
-offset_left = -50.0
-offset_top = -65.0
-offset_right = 50.0
-offset_bottom = -38.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_cotqo")
-show_percentage = false

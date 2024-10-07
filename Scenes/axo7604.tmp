@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c0q6u4v2vi4h0"]
+[gd_scene load_steps=20 format=3 uid="uid://c0q6u4v2vi4h0"]
 
 [ext_resource type="Script" path="res://Scripts/axolot.gd" id="1_hwwaf"]
 [ext_resource type="Texture2D" uid="uid://dgcvt8mv743hp" path="res://Assets/Monsters/Axolot/SpriteSheet.png" id="2_lbvjh"]
@@ -138,9 +138,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cotqo"]
-bg_color = Color(0.215686, 0.937255, 0, 1)
-
 [node name="axolot_enemy" type="PathFollow2D"]
 rotates = false
 script = ExtResource("1_hwwaf")
@@ -154,13 +151,7 @@ animation = &"right"
 autoplay = "right"
 frame_progress = 0.145332
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="enemy"]
-polygon = PackedVector2Array(-20, -40, 15, -40, 15, -35, 20, -35, 20, -30, 25, -30, 25, -20, 30, -20, 30, -5, 25, -5, 25, 0, 20, 0, 20, 20, 30, 20, 30, 25, 35, 25, 35, 35, 15, 35, 15, 30, 5, 30, 5, 35, -5, 35, -5, 30, -15, 30, -15, 35, -35, 35, -35, 25, -30, 25, -30, 20, -20, 20, -20, 0, -25, 0, -25, -5, -30, -5, -30, -25, -25, -25, -25, -35, -20, -35)
+[node name="Area2D" type="Area2D" parent="enemy"]
 
-[node name="ProgressBar" type="ProgressBar" parent="enemy"]
-offset_left = -50.0
-offset_top = -65.0
-offset_right = 50.0
-offset_bottom = -38.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_cotqo")
-show_percentage = false
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="enemy/Area2D"]
+polygon = PackedVector2Array(-20, -40, 15, -40, 15, -35, 20, -35, 20, -30, 25, -30, 25, -20, 30, -20, 30, -5, 25, -5, 25, 0, 20, 0, 20, 20, 30, 20, 30, 25, 35, 25, 35, 35, 15, 35, 15, 30, 5, 30, 5, 35, -5, 35, -5, 30, -15, 30, -15, 35, -35, 35, -35, 25, -30, 25, -30, 20, -20, 20, -20, 0, -25, 0, -25, -5, -30, -5, -30, -25, -25, -25, -25, -35, -20, -35)

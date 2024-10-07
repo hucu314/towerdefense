@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://hoa2vhex2e7x"]
+[gd_scene load_steps=22 format=3 uid="uid://hoa2vhex2e7x"]
 
 [ext_resource type="Script" path="res://Scripts/fish_enemy.gd" id="1_gkdvn"]
 [ext_resource type="Texture2D" uid="uid://dkgj4vnghuxku" path="res://Assets/Monsters/Fish/SpriteSheet.png" id="1_lkb3x"]
@@ -141,6 +141,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_163b6"]
 radius = 54.0093
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jb5t"]
+bg_color = Color(0.215686, 0.937255, 0, 1)
+
 [node name="fish_enemy" type="PathFollow2D"]
 rotates = false
 script = ExtResource("1_gkdvn")
@@ -156,3 +159,11 @@ autoplay = "right"
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="enemy"]
 position = Vector2(-1, 4)
 shape = SubResource("CircleShape2D_163b6")
+
+[node name="ProgressBar" type="ProgressBar" parent="enemy"]
+offset_left = -50.0
+offset_top = -65.0
+offset_right = 50.0
+offset_bottom = -38.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_1jb5t")
+show_percentage = false

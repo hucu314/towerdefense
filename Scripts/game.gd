@@ -47,7 +47,7 @@ func _on_timer_timeout():
 	if numEnem < waveEnem:
 		randEnem()
 		numEnem += 1
-		timer.start(5)
+		timer.start(randi_range(1,4))
 	pass # Replace with function body.
 
 
