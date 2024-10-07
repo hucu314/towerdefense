@@ -7,7 +7,7 @@ extends Node
 @onready var button = $Button
 @onready var countdown = false
 @onready var countTimer = $countTimer
-var axolot = preload("res://Scenes/axolot.tscn")
+var axolot = preload("res://Scenes/axolot_enemy.tscn")
 var fishEnemy = preload("res://Scenes/fish_enemy.tscn")
 @onready var types = [axolot,fishEnemy]
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +22,7 @@ func _process(delta):
 		countTimer.text = str(int(timer.get_time_left())+1)
 	if variables.totalEnem==0 and countdown == false:
 		button.visible=true
+		variables.waveStart = false
 	healthText.text = "Health: " + str(variables.health)
 	pass
 
@@ -37,6 +38,7 @@ func randEnem():
 func startWave():
 	waveEnem = randi_range(7,16)
 	button.visible = false
+	variables.waveStart = true
 	print(waveEnem)
 
 func _on_timer_timeout():
@@ -45,7 +47,7 @@ func _on_timer_timeout():
 	if numEnem < waveEnem:
 		randEnem()
 		numEnem += 1
-		timer.start(5)
+		timer.start(randi_range(1,4))
 	pass # Replace with function body.
 
 

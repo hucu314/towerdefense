@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmsnjanrvqkwl"]
+[gd_scene load_steps=4 format=3 uid="uid://cs810kfjtd2f8"]
 
-[ext_resource type="Texture2D" uid="uid://c16r4bmmww23q" path="res://Assets/towerDefense_tilesheet.png" id="1_cjvdm"]
-[ext_resource type="Script" path="res://Scripts/green_turret.gd" id="1_q67kw"]
+[ext_resource type="Script" path="res://Scripts/red_turret.gd" id="1_a12hb"]
+[ext_resource type="Texture2D" uid="uid://c16r4bmmww23q" path="res://Assets/towerDefense_tilesheet.png" id="2_jhefr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83gfs"]
 radius = 429.005
 
-[node name="greenTurret" type="CharacterBody2D"]
-script = ExtResource("1_q67kw")
+[node name="redTurret" type="CharacterBody2D"]
+script = ExtResource("1_a12hb")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -19,9 +19,9 @@ shape = SubResource("CircleShape2D_83gfs")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -12)
 scale = Vector2(2, 2)
-texture = ExtResource("1_cjvdm")
+texture = ExtResource("2_jhefr")
 region_enabled = true
-region_rect = Rect2(1216, 640, 64, 64)
+region_rect = Rect2(1280, 640, 64, 64)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

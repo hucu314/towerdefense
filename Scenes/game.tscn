@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://biirkyd2ix3qj"]
+[gd_scene load_steps=14 format=3 uid="uid://biirkyd2ix3qj"]
 
 [ext_resource type="Texture2D" uid="uid://c16r4bmmww23q" path="res://Assets/towerDefense_tilesheet.png" id="1_6lvkv"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_y7pxk"]
 [ext_resource type="PackedScene" uid="uid://bmsnjanrvqkwl" path="res://Scenes/green_turret.tscn" id="2_e4y0r"]
-[ext_resource type="Script" path="res://Scripts/Enemies.gd" id="3_r6x88"]
+[ext_resource type="PackedScene" uid="uid://df4lsinudnwqy" path="res://Scenes/heavy_turret.tscn" id="5_1jod7"]
+[ext_resource type="PackedScene" uid="uid://cs810kfjtd2f8" path="res://Scenes/red_turret.tscn" id="5_37p7a"]
 [ext_resource type="Script" path="res://Scripts/variables.gd" id="5_ijupb"]
+[ext_resource type="PackedScene" uid="uid://bqohi0kysp56a" path="res://Scenes/towerOptions.tscn" id="7_0ykk7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2hwvp"]
 texture = ExtResource("1_6lvkv")
@@ -4370,6 +4372,24 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_2hwvp")
 
+[sub_resource type="GDScript" id="GDScript_mbqo5"]
+script/source = "extends Node
+
+@onready var path_follow : Path2D = $Path2D
+@export var speed = 100
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+#	path_follow.progress += speed*delta
+	pass
+"
+
 [sub_resource type="Curve2D" id="Curve2D_0bnom"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -960, -352, 0, 0, 0, 0, -480, -352, 0, 0, 0, 0, -480, 352, 0, 0, 0, 0, 608, 352, 0, 0, 0, 0, 608, 32, 0, 0, 0, 0, -32, 32, 0, 0, 0, 0, -32, -352, 0, 0, 0, 0, 960, -352)
@@ -4380,8 +4400,8 @@ point_count = 8
 script/source = "extends Area2D
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_26y0n"]
-size = Vector2(104, 168)
+[sub_resource type="CircleShape2D" id="CircleShape2D_rwg0v"]
+radius = 49.0102
 
 [node name="game" type="Node"]
 script = ExtResource("1_y7pxk")
@@ -4396,11 +4416,27 @@ metadata/_edit_group_ = true
 position = Vector2(0, -8)
 zoom = Vector2(0.75, 0.75)
 
-[node name="greenTurret" parent="." instance=ExtResource("2_e4y0r")]
+[node name="menuButtons" type="Node" parent="."]
+
+[node name="MenuButton" parent="menuButtons" instance=ExtResource("7_0ykk7")]
+offset_left = -803.0
+offset_top = -161.0
+offset_right = -703.0
+offset_bottom = -61.0
+
+[node name="turrets" type="Node" parent="."]
+
+[node name="greenTurret" parent="turrets" instance=ExtResource("2_e4y0r")]
 position = Vector2(-192, 504)
 
+[node name="redTurret" parent="turrets" instance=ExtResource("5_37p7a")]
+position = Vector2(-706, 246)
+
+[node name="heavyTurret" parent="turrets" instance=ExtResource("5_1jod7")]
+position = Vector2(-707, -68)
+
 [node name="Enemies" type="Node" parent="."]
-script = ExtResource("3_r6x88")
+script = SubResource("GDScript_mbqo5")
 
 [node name="Path2D" type="Path2D" parent="Enemies"]
 curve = SubResource("Curve2D_0bnom")
@@ -4430,8 +4466,8 @@ text = "New Wave"
 script = SubResource("GDScript_o1xh3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="endZone"]
-position = Vector2(-480, 162)
-shape = SubResource("RectangleShape2D_26y0n")
+position = Vector2(-704, -63)
+shape = SubResource("CircleShape2D_rwg0v")
 
 [node name="countTimer" type="Label" parent="."]
 visible = false
@@ -4443,6 +4479,8 @@ theme_override_font_sizes/font_size = 200
 text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="bullets" type="Node" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

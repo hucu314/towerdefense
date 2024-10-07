@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckg1btkgwejjk"]
+
+[ext_resource type="Script" path="res://Scripts/heavy_bullet.gd" id="1_w2xp5"]
+[ext_resource type="Texture2D" uid="uid://c16r4bmmww23q" path="res://Assets/towerDefense_tilesheet.png" id="2_7pyig"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6b6vd"]
+radius = 14.0
+height = 56.0
+
+[node name="heavy_bullet" type="CharacterBody2D"]
+script = ExtResource("1_w2xp5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.8147e-06, -9.53674e-07)
+scale = Vector2(1.281, 1.281)
+texture = ExtResource("2_7pyig")
+region_enabled = true
+region_rect = Rect2(1424, 648, 32, 48)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_6b6vd")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
