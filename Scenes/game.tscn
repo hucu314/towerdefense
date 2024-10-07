@@ -4416,7 +4416,6 @@ zoom = Vector2(0.75, 0.75)
 [node name="menuButtons" type="Node" parent="."]
 
 [node name="MenuButton" parent="menuButtons" instance=ExtResource("7_0ykk7")]
-anchors_preset = 0
 offset_left = -804.0
 offset_top = -164.0
 offset_right = -704.0
@@ -4424,7 +4423,6 @@ offset_bottom = -64.0
 switch_on_hover = false
 
 [node name="MenuButton2" parent="menuButtons" instance=ExtResource("7_0ykk7")]
-anchors_preset = 0
 offset_left = -804.0
 offset_top = 156.0
 offset_right = -704.0
@@ -4432,7 +4430,6 @@ offset_bottom = 256.0
 switch_on_hover = false
 
 [node name="MenuButton3" parent="menuButtons" instance=ExtResource("7_0ykk7")]
-anchors_preset = 0
 offset_left = -676.0
 offset_top = 412.0
 offset_right = -576.0
@@ -4440,7 +4437,6 @@ offset_bottom = 512.0
 switch_on_hover = false
 
 [node name="MenuButton4" parent="menuButtons" instance=ExtResource("7_0ykk7")]
-anchors_preset = 0
 offset_left = 94.0
 offset_top = 412.0
 offset_right = 194.0
@@ -4448,7 +4444,6 @@ offset_bottom = 512.0
 switch_on_hover = false
 
 [node name="MenuButton5" parent="menuButtons" instance=ExtResource("7_0ykk7")]
-anchors_preset = 0
 offset_left = 668.0
 offset_top = 348.0
 offset_right = 768.0
@@ -4456,7 +4451,6 @@ offset_bottom = 448.0
 switch_on_hover = false
 
 [node name="MenuButton6" parent="menuButtons" instance=ExtResource("7_0ykk7")]
-anchors_preset = 0
 offset_left = 668.0
 offset_top = 92.0
 offset_right = 768.0
@@ -4464,7 +4458,6 @@ offset_bottom = 192.0
 switch_on_hover = false
 
 [node name="MenuButton7" parent="menuButtons" instance=ExtResource("7_0ykk7")]
-anchors_preset = 0
 offset_left = 350.0
 offset_top = -292.0
 offset_right = 450.0
@@ -4472,7 +4465,6 @@ offset_bottom = -192.0
 switch_on_hover = false
 
 [node name="MenuButton8" parent="menuButtons" instance=ExtResource("7_0ykk7")]
-anchors_preset = 0
 offset_left = 94.0
 offset_top = -228.0
 offset_right = 194.0
@@ -4480,7 +4472,6 @@ offset_bottom = -128.0
 switch_on_hover = false
 
 [node name="MenuButton9" parent="menuButtons" instance=ExtResource("7_0ykk7")]
-anchors_preset = 0
 offset_left = -354.0
 offset_top = -34.0
 offset_right = -254.0
@@ -4488,7 +4479,6 @@ offset_bottom = 66.0
 switch_on_hover = false
 
 [node name="MenuButton10" parent="menuButtons" instance=ExtResource("7_0ykk7")]
-anchors_preset = 0
 offset_left = -98.0
 offset_top = 92.0
 offset_right = 1.99997
@@ -4496,7 +4486,6 @@ offset_bottom = 192.0
 switch_on_hover = false
 
 [node name="MenuButton11" parent="menuButtons" instance=ExtResource("7_0ykk7")]
-anchors_preset = 0
 offset_left = 286.0
 offset_top = 92.0
 offset_right = 386.0
@@ -4504,7 +4493,6 @@ offset_bottom = 192.0
 switch_on_hover = false
 
 [node name="MenuButton12" parent="menuButtons" instance=ExtResource("7_0ykk7")]
-anchors_preset = 0
 offset_left = -354.0
 offset_top = -292.0
 offset_right = -254.0
@@ -4512,7 +4500,6 @@ offset_bottom = -192.0
 switch_on_hover = false
 
 [node name="MenuButton13" parent="menuButtons" instance=ExtResource("7_0ykk7")]
-anchors_preset = 0
 offset_left = -290.0
 offset_top = 412.0
 offset_right = -190.0
@@ -4533,20 +4520,39 @@ one_shot = true
 [node name="variables" type="Node" parent="."]
 script = ExtResource("5_ijupb")
 
-[node name="health" type="Label" parent="."]
+[node name="labels" type="Node" parent="."]
+
+[node name="health" type="Label" parent="labels"]
 offset_left = -888.0
-offset_top = -624.0
+offset_top = -630.0
 offset_right = -818.0
-offset_bottom = -601.0
+offset_bottom = -607.0
 scale = Vector2(10, 10)
 text = "Health: X"
 
-[node name="Button" type="Button" parent="."]
+[node name="wallet" type="Label" parent="labels"]
+offset_left = 300.0
+offset_top = -630.0
+offset_right = 330.0
+offset_bottom = -607.0
+scale = Vector2(10, 10)
+text = "$XX"
+
+[node name="buttons" type="Node" parent="."]
+
+[node name="Button" type="Button" parent="buttons"]
 offset_left = 616.0
 offset_top = -232.0
 offset_right = 816.0
 offset_bottom = -70.0
 text = "New Wave"
+
+[node name="restart" type="Button" parent="buttons"]
+offset_left = 754.0
+offset_top = -562.0
+offset_right = 869.0
+offset_bottom = -524.0
+text = "Reset"
 
 [node name="endZone" type="Area2D" parent="."]
 script = SubResource("GDScript_o1xh3")
@@ -4569,4 +4575,5 @@ vertical_alignment = 1
 [node name="bullets" type="Node" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="buttons/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="buttons/restart" to="." method="_on_restart_pressed"]

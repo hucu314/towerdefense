@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://Scripts/towerOptions.gd" id="2_3mjej"]
 
 [node name="MenuButton" type="MenuButton"]
-anchors_preset = -1
 offset_left = -100.0
 offset_top = -100.0
 offset_right = -1.52588e-05

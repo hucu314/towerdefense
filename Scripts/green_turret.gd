@@ -8,6 +8,7 @@ var targetDist = 1000
 var numTargets = 0
 var directions = []
 var time = 1.5
+var cost = 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer.start(time)
