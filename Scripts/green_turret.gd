@@ -1,6 +1,6 @@
 extends CharacterBody2D
-@onready var bullets = $"../bullets"
-
+class_name Tower
+@onready var bullets = $"../../bullets"
 @onready var timer = $Timer
 
 var bullet_type = preload("res://Scenes/green_bullet.tscn")
@@ -62,4 +62,5 @@ func _on_timer_timeout():
 			bulletInstance.global_position = global_position
 			bulletInstance.enemy = variables.targets[0].global_position
 			bullets.add_child(bulletInstance)
+			print(self)
 	pass # Replace with function body.

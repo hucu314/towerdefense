@@ -32,7 +32,7 @@ func _process(delta):
 		variables.totalEnem -= 1
 		print(variables.totalEnem)
 		self.queue_free()
-	if health == 0:
+	if health <= 0:
 		variables.totalEnem -= 1
 		print(variables.totalEnem)
 		self.queue_free()

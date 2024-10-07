@@ -5,6 +5,7 @@ var enemy
 var speed = 600
 var direction = Vector2(0,0)
 var damage = 10
+var selfDestruct = true
 
 func _ready():
 	direction = (enemy - global_position).normalized()
@@ -17,5 +18,6 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	if 'enemy' in body.name:
 		body.get_parent().takeDamage(damage)
-		queue_free()
+		if selfDestruct == true:
+			queue_free()
 	pass # Replace with function body.
