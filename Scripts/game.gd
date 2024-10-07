@@ -38,7 +38,7 @@ func _process(delta):
 		get_tree().reload_current_scene()
 	healthText.text = "Health: " + str(variables.health)
 	wallet.text = '$'+ str(variables.money)
-	wave_num.text = "Kills" + str(variables.enemies)
+	wave_num.text = "Kills: " + str(variables.enemies)
 	pass
 
 
