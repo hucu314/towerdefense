@@ -1,15 +1,18 @@
 extends Node
 @onready var path_follow = $Enemies/Path2D
 @onready var timer = $Timer
-@onready var healthText = $health
+@onready var healthText = $labels/health
+@onready var wallet = $labels/wallet
 @onready var waveEnem = 0
 @onready var numEnem = 0
-@onready var button = $Button
+@onready var button = $buttons/Button
 @onready var countdown = false
 @onready var countTimer = $countTimer
 var axolot = preload("res://Scenes/axolot_enemy.tscn")
 var fishEnemy = preload("res://Scenes/fish_enemy.tscn")
 @onready var types = [axolot,fishEnemy]
+@onready var restart = $buttons/restart
+
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
 	pass # Replace with function body.
@@ -24,6 +27,7 @@ func _process(delta):
 		button.visible=true
 		variables.waveStart = false
 	healthText.text = "Health: " + str(variables.health)
+	wallet.text = '$'+ str(variables.money)
 	pass
 
 
@@ -57,4 +61,14 @@ func _on_button_pressed():
 	timer.start(3)
 	countdown = true
 	button.visible = false
+	pass # Replace with function body.
+
+
+func _on_restart_pressed():
+	variables.health = 100
+	variables.totalEnem = 0
+	variables.targets = []
+	variables.waveStart = false
+	variables.money = 30
+	get_tree().reload_current_scene()
 	pass # Replace with function body.
