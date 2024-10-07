@@ -1,0 +1,170 @@
+[gd_scene load_steps=22 format=3 uid="uid://c6lo231l48tha"]
+
+[ext_resource type="Script" path="res://Scripts/cyclops_enemy.gd" id="1_rq7oi"]
+[ext_resource type="Texture2D" uid="uid://42nqysu3rojg" path="res://Assets/Monsters/Cyclope/SpriteSheet.png" id="2_fu15o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11qqt"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aldlv"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssebn"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvu58"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp6rk"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l8p4"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcmu3"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31al3"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6l46"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwcju"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ofqv"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwp4p"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bd0v0"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ax8v"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m6b4"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjgcr"]
+atlas = ExtResource("2_fu15o")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wq1xs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11qqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aldlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssebn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvu58")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp6rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l8p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcmu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31al3")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6l46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwcju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ofqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwp4p")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bd0v0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ax8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m6b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjgcr")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_163b6"]
+radius = 54.0093
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jb5t"]
+bg_color = Color(0.215686, 0.937255, 0, 1)
+
+[node name="cyclops_enemy" type="PathFollow2D"]
+rotates = false
+script = ExtResource("1_rq7oi")
+
+[node name="enemy" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_wq1xs")
+animation = &"left"
+autoplay = "right"
+frame_progress = 0.927297
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="enemy"]
+position = Vector2(-1, 4)
+shape = SubResource("CircleShape2D_163b6")
+
+[node name="ProgressBar" type="ProgressBar" parent="enemy"]
+offset_left = -50.0
+offset_top = -65.0
+offset_right = 50.0
+offset_bottom = -38.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_1jb5t")
+show_percentage = false

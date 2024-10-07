@@ -10,6 +10,7 @@ class_name Enemies
 @export var damage = 10
 @export var last_position : Vector2
 @onready var health_bar = $enemy/ProgressBar
+@onready var reward = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,10 +32,13 @@ func _process(delta):
 		variables.health -= damage
 		variables.totalEnem -= 1
 		print(variables.totalEnem)
+		variables.money += reward
 		self.queue_free()
 	if health <= 0:
 		variables.totalEnem -= 1
 		print(variables.totalEnem)
+		variables.money += reward
+		variables.enemies+=1
 		self.queue_free()
 	pass
 
