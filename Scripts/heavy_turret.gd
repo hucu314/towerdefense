@@ -7,4 +7,5 @@ func _ready():
 	numTargets = 0
 	directions = []
 	timer.start(time)
+	cost = 30
 	pass

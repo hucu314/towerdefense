@@ -1,23 +1,21 @@
 extends Node
 @onready var path_follow = $Enemies/Path2D
 @onready var timer = $Timer
-@onready var healthText = $health
+@onready var healthText = $labels/health
+@onready var wallet = $labels/wallet
 @onready var waveEnem = 0
 @onready var numEnem = 0
-@onready var button = $Button
+@onready var button = $buttons/Button
 @onready var countdown = false
 @onready var countTimer = $countTimer
 var axolot = preload("res://Scenes/axolot_enemy.tscn")
 var fishEnemy = preload("res://Scenes/fish_enemy.tscn")
-<<<<<<< Updated upstream
-@onready var types = [axolot,fishEnemy]
-=======
 var cyclops = preload("res://Scenes/cyclops_enemy.tscn")
 @onready var types = [axolot,fishEnemy,cyclops]
 @onready var restart = $buttons/restart
 @onready var wave_num = $labels/waveNum
+@onready var restart = $buttons/restart
 
->>>>>>> Stashed changes
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
 	pass # Replace with function body.
@@ -40,11 +38,8 @@ func _process(delta):
 		variables.enemies = 0
 		get_tree().reload_current_scene()
 	healthText.text = "Health: " + str(variables.health)
-<<<<<<< Updated upstream
-=======
 	wallet.text = '$'+ str(variables.money)
 	wave_num.text = "Kills" + str(variables.enemies)
->>>>>>> Stashed changes
 	pass
 
 
@@ -78,8 +73,7 @@ func _on_button_pressed():
 	countdown = true
 	button.visible = false
 	pass # Replace with function body.
-<<<<<<< Updated upstream
-=======
+
 
 
 func _on_restart_pressed():
@@ -91,4 +85,3 @@ func _on_restart_pressed():
 	variables.enemies = 0
 	get_tree().reload_current_scene()
 	pass # Replace with function body.
->>>>>>> Stashed changes

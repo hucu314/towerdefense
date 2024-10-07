@@ -4522,6 +4522,7 @@ script = ExtResource("5_ijupb")
 [node name="labels" type="Node" parent="."]
 
 [node name="health" type="Label" parent="labels"]
+
 offset_left = -872.0
 offset_top = -672.0
 offset_right = -782.0
