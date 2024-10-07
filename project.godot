@@ -20,8 +20,8 @@ variables="*res://Scripts/variables.gd"
 
 [display]
 
-window/size/viewport_width=1344
-window/size/viewport_height=864
+window/size/viewport_width=1280
+window/size/viewport_height=1024
 mouse_cursor/stretch/scale=8.0
 
 [rendering]
